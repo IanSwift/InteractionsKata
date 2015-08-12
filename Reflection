@@ -1,0 +1,31 @@
+What I Did:
+
+I built upon my RunTwo StringKata (https://github.com/IanSwift/StringKata/tree/RunTwo) in order
+to build a logging service (tested through mocks to make sure interactions were happening) which
+printed to a file (tested by reading the file) the results of all summations. Then, I added
+a WebService interface (which in actuality just prints a response out to console), which would
+be notified if a log failed.
+
+What I Did Right:
+
+I did a pretty good job of test driving this, and I did it pretty fast. I was able to get the
+full story done in under an hour (some mistakes given), and even stepped away thinking I had
+done it completely right. I also learned something--I spent a good amount of time before starting
+writing worrying about what the WebService would do. It doesn't matter what the webservice does! I don't
+need it to write the rest of my application, and I can switch it out should I ever feel the need.
+The idea to print to console came to me through writing the code, and I think it's a pretty effective
+replacement for an actual web notification.
+
+What I Did Wrong:
+
+A lot. First of all, I shouldn't have spent so much time worrying about the web service. That's the
+point of separating components and writing mocks. This was emphasized more so by this kata then
+the previous TDD katas I've done, so I was happy with that at least. I also messed up my tests pretty
+bad. In my code I test that adder throws an error, but I fail to test if parser throws an error.
+The problem here is that ninety-nine times out of a hundred, it's going to be the parser that
+throws an error, not the adder. This came out neither in my tests, nor was it driven out. There's
+two possibilitites here. Either I 1) didn't effectively test drive out that feature, and need to
+slow down more. Is a red test always good when its red for a reason that doesn't encapsulate the
+use cases? Was the change I made to make it green necessary? I think if I had slowed down and
+looked at the code in Calculator after writing/passing the test, I would have noticed it right away.
+This is something I'm going to be thinking about for a while.
